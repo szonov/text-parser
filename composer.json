@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4" : {
-            "SZonov\\Texts\\Parser"     : "src/"
+            "SZonov\\Text\\Parser"     : "src/"
         }
     }
 }

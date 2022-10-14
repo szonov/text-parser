@@ -10,46 +10,30 @@ use Iterator;
  * Class ParserIterator
  * @package SZonov\Text\Parser
  */
-class ParserIterator implements Iterator {
-
-    /**
-     * @var ParserInterface
-     */
-    protected $parser;
-
-    /**
-     * @var int
-     */
-    protected $pos = 0;
-
-    /**
-     * @var mixed
-     */
-    protected $item;
+class ParserIterator implements Iterator
+{
+    protected mixed $pos = 0;
+    protected mixed $item = false;
 
     /**
      * ParserIterator constructor.
-     * @param ParserInterface $parser
      */
-    public function __construct(ParserInterface $parser)
+    public function __construct(protected ParserInterface $parser)
     {
-        $this->parser = $parser;
     }
 
     /**
      * Implementation of Iterator interface
-     * @return mixed
      */
-    public function current ()
+    public function current(): mixed
     {
         return $this->item;
     }
 
     /**
      * Implementation of Iterator interface
-     * @return int
      */
-    public function key ()
+    public function key(): mixed
     {
         return $this->pos;
     }
@@ -57,7 +41,7 @@ class ParserIterator implements Iterator {
     /**
      * Implementation of Iterator interface
      */
-    public function next ()
+    public function next(): void
     {
         ++$this->pos;
     }
@@ -65,7 +49,7 @@ class ParserIterator implements Iterator {
     /**
      * Implementation of Iterator interface
      */
-    public function rewind ()
+    public function rewind(): void
     {
         $this->parser->rewind();
         $this->pos = 0;
@@ -74,9 +58,8 @@ class ParserIterator implements Iterator {
 
     /**
      * Implementation of Iterator interfaces
-     * @return bool
      */
-    public function valid ()
+    public function valid(): bool
     {
         $this->item = $this->parser->getItem();
         return $this->item !== false;

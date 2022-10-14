@@ -12,13 +12,11 @@ interface ParserInterface
 {
     /**
      * Rewind parser (start parsing process from scratch)
-     * @return void
      */
-    public function rewind();
+    public function rewind(): void;
 
     /**
      * Get next parsed value
-     * @return mixed
      */
     public function getItem();
 }
